@@ -12,13 +12,17 @@ class Solution:
 
         n = len(nums)
         mem = [1]*n
+        res = 1
 
         for i in range(n):
             for j in range(i):
                 if nums[j] < nums[i]:
                     mem[i] = max(mem[i], mem[j]+1)
+                    if res < mem[i]:
+                        res = mem[i]
+                        continue
             
-        return max(mem)
+        return res
 
 
 
