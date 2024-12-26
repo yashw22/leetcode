@@ -20,7 +20,6 @@ class Solution:
                         return False
             return True
 
-
         for i in range(n):
             if not bfs(i):
                 return False
