@@ -13,11 +13,11 @@ class Solution:
             while q:
                 curr = q.popleft()
                 for nei in graph[curr]:
-                    if even[curr]==even[nei]:
-                        return False
-                    elif not even[nei]:
+                    if not even[nei]:
                         q.append(nei)
                         even[nei] = -1 * even[curr]
+                    elif even[curr]==even[nei]:
+                        return False
             return True
 
 
