@@ -23,11 +23,8 @@ class Solution:
             if (i,curr) in mem:
                 return mem[(i,curr)]
 
-            numWays = dfs(i+1, curr+nums[i])
-            numWays += dfs(i+1, curr-nums[i])
-            mem[(i,curr)] = numWays
-
-            return numWays
+            mem[(i,curr)] = dfs(i+1, curr+nums[i]) + dfs(i+1, curr-nums[i])
+            return mem[(i,curr)]
 
         return dfs(0,0)
 
