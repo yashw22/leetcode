@@ -11,16 +11,15 @@ class Solution:
 
         while q:
             n = len(q)
-            l, r = float("inf"), -1
-            for _ in range(n):
+            l, r = 0, 0
+            for i in range(n):
                 node, idx = q.popleft()
                 if node.left: q.append((node.left, idx*2+1))
                 if node.right: q.append((node.right, idx*2+2))
-                l = min(l, idx)
-                r = max(r, idx)
+                if i==0: l=idx
+                if i==n-1: r=idx
             
-            if l!=float("inf") and r!=-1:
-                res = max(res, r-l+1)
+            res = max(res, r-l+1)
 
         return res
         
