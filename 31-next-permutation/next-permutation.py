@@ -14,11 +14,10 @@ class Solution:
             nums.sort()
             return
 
-        low = n-1
-        while idx<low:
-            if nums[idx]<nums[low]:
-                break
-            low -= 1
+        low = idx+1
+        for i in range(idx+1, n):
+            if nums[idx]<nums[i]<nums[low]:
+                low = i
 
         nums[idx], nums[low] = nums[low], nums[idx]
         nums[idx+1:] = sorted(nums[idx+1:])
