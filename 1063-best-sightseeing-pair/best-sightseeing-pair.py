@@ -2,12 +2,12 @@ class Solution:
     def maxScoreSightseeingPair(self, values: List[int]) -> int:
         n = len(values)
 
-        maxLeft = [values[0]] + [0]*(n-1)
+        maxLeft = values[0]
         maxScore = 0
 
         for i in range(1,n):
             curr = values[i]-i
-            maxScore = max(maxScore, maxLeft[i-1] + curr)
-            maxLeft[i] = max(maxLeft[i-1], values[i]+i)
+            maxScore = max(maxScore, maxLeft + curr)
+            maxLeft = max(maxLeft, values[i]+i)
 
         return maxScore
