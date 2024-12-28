@@ -5,9 +5,9 @@ class Solution:
 
         for s,e in intervals[1:]:
             ls, le = res[-1]
-            if s <= le:
-                res[-1][1] = max(le, e)
-            else:
+            if s > le:
                 res.append([s,e])
+            else:
+                res[-1][1] = max(le, e)
 
         return res
