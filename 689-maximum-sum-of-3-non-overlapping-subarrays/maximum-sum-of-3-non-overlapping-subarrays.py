@@ -50,9 +50,6 @@ class Solution:
 
         for i in range(1, n-3*k+1):
             a,b,c = i, i+k, i+2*k
-            # print(i, a,b,c)
-            # print(a-1,b-1,c-1)
-            # print(a+k-1,b+k-1,c+k-1)
             lsum += nums[a+k-1]-nums[a-1]
             msum += nums[b+k-1]-nums[b-1]
             rsum += nums[c+k-1]-nums[c-1]
