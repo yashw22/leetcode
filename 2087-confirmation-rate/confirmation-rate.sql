@@ -1,27 +1,17 @@
 # Write your MySQL query statement below
 
 with
-aC as (
-    select user_id, count(action) as confirmed
-    from Confirmations
-    where action='confirmed'
-    group by user_id
-),
-T as (
-    select user_id, count(action) as total
+c as (
+    select
+        user_id,
+        count(action) as total,
+        count(case when action='confirmed' then 1 end) as confirmed
     from Confirmations
     group by user_id
 )
 select
     s.user_id,
-    round(
-        case
-        when T.total is null or aC.confirmed is null then 0
-        else aC.confirmed/T.total
-        end,
-    2) as confirmation_rate
+    round( coalesce(c.confirmed,0)/coalesce(c.total,1), 2) as confirmation_rate
 from Signups s
-left join aC
-on s.user_id=aC.user_id
-left join T
-on s.user_id=T.user_id;
+left join c
+on s.user_id=c.user_id;
