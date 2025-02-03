@@ -44,8 +44,8 @@ class Solution:
 
         # return res
 
-        def getPalin(l, r, s, n):
-            while l>=0 and r<n and s[l]==s[r]:
+        def getPalin(l, r):
+            while l>=0 and r<len(s) and s[l]==s[r]:
                 l -= 1
                 r += 1
             return r-l+1-2, s[l+1: r]
@@ -53,14 +53,13 @@ class Solution:
 
         res = ""
         reslen = 0
-        n = len(s)
-        for i in range(n):
-            currlen, currPalin = getPalin(i, i, s, n)
+        for i in range(len(s)):
+            currlen, currPalin = getPalin(i, i)
             if currlen>reslen:
                 reslen = currlen
                 res = currPalin
             
-            currlen, currPalin = getPalin(i, i+1, s, n)
+            currlen, currPalin = getPalin(i, i+1)
             if currlen>reslen:
                 reslen = currlen
                 res = currPalin
