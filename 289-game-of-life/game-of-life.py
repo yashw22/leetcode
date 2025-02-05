@@ -23,14 +23,10 @@ class Solution:
         for i in range(m):
             for j in range(n):
                 live = getLiveNei(i,j)
-                if board[i][j]==0:
-                    if live==3:
-                        board[i][j] = 2
-                else:
-                    if live<2:
-                        board[i][j] = 3
-                    elif live>3:
-                        board[i][j] = 3
+                if board[i][j]==0 and live==3:
+                    board[i][j] = 2
+                elif board[i][j]==1 and (live<2 or live>3):
+                    board[i][j] = 3
     
         for i in range(m):
             for j in range(n):
