@@ -10,14 +10,13 @@ class Solution:
 
         # return max(dp)
 
-        n = len(nums)
-        mem = [1]*n
+        mem = [1]*len(nums)
 
-        for i in range(n):
+        for i in range(len(nums)):
             for j in range(i):
-                if nums[j] < nums[i]:
-                    mem[i] = max(mem[i], mem[j]+1)
-            
+                if nums[j]<nums[i]:
+                    mem[i] = max(mem[i], 1+mem[j])
+
         return max(mem)
 
 
