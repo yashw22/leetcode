@@ -31,9 +31,9 @@ class Solution:
                 res.append(curr[:])
                 return
             
-            for i in range(len(nums)):
+            for i in nums:
                 if i not in visit:
-                    curr.append(nums[i])
+                    curr.append(i)
                     visit.add(i)
                     rec()
                     visit.remove(i)
